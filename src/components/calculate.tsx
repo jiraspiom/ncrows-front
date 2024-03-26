@@ -16,6 +16,9 @@ export function Calculate({ price }: CalculateProps) {
 
   const result = 0.0125 * averagePrice
   const profit = result - price
+  const marketPrice = profit - profit * (5 / 100)
+
+  console.log({ profit, marketPrice })
 
   return (
     <div className="flex items-center w-full h-full bg-zinc-800 p-5">
@@ -45,9 +48,10 @@ export function Calculate({ price }: CalculateProps) {
         </div>
         {averagePrice > 0 && (
           <div
-            className={`ml-6 px-4 border-l-[1px] border-zinc-700 text-3xl ${profit > 0 ? 'text-green-500' : 'text-red-500'}`}
+            className={`relative ml-6 px-4 border-l-[1px] border-zinc-700 text-3xl ${marketPrice > 0 ? 'text-green-500' : 'text-red-500'}`}
           >
-            {profit.toLocaleString('en', {
+            <span className="text-2xs absolute top-0 right-0">-5%</span>
+            {marketPrice.toLocaleString('en', {
               style: 'currency',
               currency: 'USD',
             })}
