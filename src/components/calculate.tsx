@@ -29,6 +29,7 @@ export function Calculate({ price }: CalculateProps) {
         <input
           type="text"
           value={averagePrice}
+          onFocus={(e) => e.target.select()}
           onChange={handleAveragePrice}
           placeholder="1000"
           className="w-[130px] p-3 mx-1 text-3xl border-none bg-transparent"
