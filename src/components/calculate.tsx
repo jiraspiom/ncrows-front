@@ -8,10 +8,10 @@ interface CalculateProps {
 }
 
 export function Calculate({ price }: CalculateProps) {
-  const [averagePrice, setAveragePrice] = useState('')
+  const [averagePrice, setAveragePrice] = useState<number>(0)
 
   function handleAveragePrice(e: ChangeEvent<HTMLInputElement>) {
-    setAveragePrice(e.target.value)
+    setAveragePrice(Number(e.target.value))
   }
 
   const result = 0.0125 * averagePrice
