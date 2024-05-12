@@ -6,16 +6,20 @@ import { ChangeEvent, useState } from 'react'
 interface CalculateProps {
   price: number
   crow: number
+  brl: number
 }
 
-export function Calculate({ price, crow }: CalculateProps) {
+export function Calculate({ price, crow, brl }: CalculateProps) {
   const [averagePrice, setAveragePrice] = useState<number>(0)
 
   function handleAveragePrice(e: ChangeEvent<HTMLInputElement>) {
     setAveragePrice(Number(e.target.value))
   }
 
-  const result = 0.0125 * averagePrice
+  const vdiamante = crow / 80
+
+  // 0.009
+  const result = vdiamante * averagePrice
   const marketPrice = result - result * (5 / 100)
   const priceInCrow = result / crow
   const profit = marketPrice - price
@@ -24,7 +28,7 @@ export function Calculate({ price, crow }: CalculateProps) {
   console.log({ profit, result, marketPrice, priceInCrow, profitInCrow })
 
   return (
-    <div className="flex items-center w-full h-full bg-zinc-800 p-5">
+    <div className="flex items-center w-full h-full bg-zinc-800 p-5 ">
       <div className="flex items-center w-[180px] border-b-[1px] border-zinc-400">
         <Image
           src="https://gcdn.wemade.games/prod/ncgl/official/2.2.0/_next/static/images/token/diagram-vdia.webp"
@@ -56,7 +60,7 @@ export function Calculate({ price, crow }: CalculateProps) {
               minimumFractionDigits: 4,
             })}
           </p>
-          <span className="text-2xl text-zinc-400">
+          <span className="text-1x text-zinc-400">
             (
             {result.toLocaleString('en', {
               style: 'currency',
@@ -64,12 +68,18 @@ export function Calculate({ price, crow }: CalculateProps) {
             })}
             )
           </span>
+          <div>
+          {(result * brl).toLocaleString('pt-br', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </div>
         </div>
         {averagePrice > 0 && (
           <div
             className={`flex flex-col items-center ml-6 px-4 border-l-[1px] border-zinc-700 text-3xl ${profit > 0 ? 'text-green-500' : 'text-red-500'}`}
           >
-            <p className="flex items-center text-3xl">
+            <p className="flex items-center text-2xl">
               <Image
                 src="https://cache.wemixplay.com/ADMIN-CONSOLE/TOKEN/CROW/5b1653cc-d2b1-4d57-a03c-4a73e83dbb46-crow.png"
                 width={40}
@@ -90,6 +100,12 @@ export function Calculate({ price, crow }: CalculateProps) {
               })}
               )
             </span>
+            <div className='text-2xl'>
+            {(profit * brl).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+            </div>
           </div>
         )}
       </div>

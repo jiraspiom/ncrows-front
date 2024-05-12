@@ -85,6 +85,7 @@ async function getCrowToken(): Promise<CrowToken> {
 }
 
 export default async function Home() {
+  const diamante = 80
   const coinList = await getPriceList()
   const crow = await getCrowToken()
 
@@ -117,7 +118,13 @@ export default async function Home() {
               height={40}
               alt="Diamond"
             />
-            <p className="text-3xl">= $0.009</p>
+            <p className="text-3xl">= {(crow.price / diamante).toLocaleString('en', {style: 'currency',
+                  currency: 'USD',
+                  minimumFractionDigits: 4,} )}
+            {' / '} {(crow.price / diamante * crow.brl).toLocaleString('pt-BR', {style: 'currency',
+                  currency: 'BRL',
+                  minimumFractionDigits: 4,} )}
+            </p>
           </div>
         </div>
 
@@ -157,7 +164,7 @@ export default async function Home() {
                   </p>
                 </div>
               </div>
-              <Calculate price={daySummary.closeDollar} crow={crow.price} />
+              <Calculate price={daySummary.closeDollar} crow={crow.price} brl={crow.brl} />
             </div>
           )
         })}
