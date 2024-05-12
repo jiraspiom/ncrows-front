@@ -170,7 +170,7 @@ export default async function Home() {
         })}
       </div>
     </div>
-       <div className=''> by ikillyou</div>
+       <div className=''> by ikillyou sa-103 </div>
     </div>
   
   )

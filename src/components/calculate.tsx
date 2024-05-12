@@ -28,7 +28,7 @@ export function Calculate({ price, crow, brl }: CalculateProps) {
   console.log({ profit, result, marketPrice, priceInCrow, profitInCrow })
 
   return (
-    <div className="flex items-center w-full h-full bg-zinc-800 p-5 ">
+    <div className="flex items-center w-full h-full bg-zinc-800 p-5">
       <div className="flex items-center w-[180px] border-b-[1px] border-zinc-400">
         <Image
           src="https://gcdn.wemade.games/prod/ncgl/official/2.2.0/_next/static/images/token/diagram-vdia.webp"
