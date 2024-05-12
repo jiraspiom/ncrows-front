@@ -89,8 +89,9 @@ export default async function Home() {
   const crow = await getCrowToken()
 
   return (
-    <div className="flex items-center justify-center w-full h-screen">
-      <div className="flex flex-col w-[980px]">
+    <div className='flex flex-col items-center justify-center w-full h-screen'>
+    <div className=" flex items-center justify-center ">
+      <div className="flex flex-col w-[980px]"> 
         <div className="flex items-center justify-between w-full h-[90px] mb-1">
           <div className="flex items-center w-[550px] p-5 bg-zinc-900">
             <Image src={crow.icon} width={50} height={50} alt="CROW" />
@@ -162,5 +163,8 @@ export default async function Home() {
         })}
       </div>
     </div>
+       <div className=''> by ikillyou</div>
+    </div>
+  
   )
 }
