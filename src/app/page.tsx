@@ -117,7 +117,7 @@ export default async function Home() {
               height={40}
               alt="Diamond"
             />
-            <p className="text-3xl">= $0.09</p>
+            <p className="text-3xl">= $0.009</p>
           </div>
         </div>
 
